@@ -1,46 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Menu.css';
 import Image from '../../Resources/lunch/lunch1.png';
+import Item from '../Database/Items';
 
 const Menu = () => {
+    const [category, setCategory] = useState('Breakfast');
+    const menuItem = Item.filter((item) => {
+        return item.category === category;
+    });
+    // console.log(menuItem);
+
     return (
         <section className="menu d-flex flex-column justify-content-center py-5">
             <ul className="menu-list d-flex justify-content-center">
-                <li>Breakfast</li>
-                <li>Lunch</li>
-                <li>Dinner</li>
+                <li onClick={() => setCategory('Breakfast')}>Breakfast</li>
+                <li onClick={() => setCategory('Lunch')}>Lunch</li>
+                <li onClick={() => setCategory('Dinner')}>Dinner</li>
             </ul>
             <div className="items mx-auto">
-                <div className="item">
-                    <img src={Image} alt="" />
-                    <p className="m-0">Name</p>
-                    <span>Description</span>
-                    <h5>$Price</h5>
-                </div>
-                <div className="item">
-                    <img src={Image} alt="" />
-                    <p className="m-0">Name</p>
-                    <span>Description</span>
-                    <h5>$Price</h5>
-                </div>
-                <div className="item">
-                    <img src={Image} alt="" />
-                    <p className="m-0">Name</p>
-                    <span>Description</span>
-                    <h5>$Price</h5>
-                </div>
-                <div className="item">
-                    <img src={Image} alt="" />
-                    <p className="m-0">Name</p>
-                    <span>Description</span>
-                    <h5>$Price</h5>
-                </div>
-                <div className="item">
-                    <img src={Image} alt="" />
-                    <p className="m-0">Name</p>
-                    <span>Description</span>
-                    <h5>$Price</h5>
-                </div>
+                {
+                    menuItem.map((menu) => {
+                        {/* console.log(menu.image); */ }
+                        return (
+                            <div key={menu.id} className="item">
+                                <img src={menu.image} alt="Item Img" />
+                                <p className="m-0">{menu.name}</p>
+                                <span>{menu.shortDescription}</span>
+                                <h5>${menu.price}</h5>
+                            </div>
+                        )
+                    })
+                }
             </div>
             <button className="checkout mx-auto" disabled>Checkout Your Food</button>
         </section>

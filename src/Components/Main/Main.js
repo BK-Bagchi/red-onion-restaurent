@@ -11,14 +11,14 @@ import Signup from '../Sign/Signup';
 const Main = () => {
     return (
         <>
-            {/* <Header />
+            <Header />
             <Menu />
             <ChooseUs />
             <About />
             <ItemDetail />
-            <Signup />
+            {/* <Signup />
             <Signin /> */}
-            <Confirm />
+            {/* <Confirm /> */}
 
         </>
     );

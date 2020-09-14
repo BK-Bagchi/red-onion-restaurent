@@ -4,12 +4,16 @@
 .item-img{
     width:80%;
 }
-.add{
+.add,
+.back{
     background:red;
     color:white;
     width: 100px;
     height: 40px;
     border-radius: 20px;
+}
+.back{
+    Background:black;
 }
 .plus-minus{
     width: 120px;

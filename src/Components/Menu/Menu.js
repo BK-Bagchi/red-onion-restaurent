@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import './Menu.css';
-import Image from '../../Resources/lunch/lunch1.png';
 import Item from '../Database/Items';
+
+import { useHistory } from "react-router-dom";
 
 const Menu = () => {
     const [category, setCategory] = useState('Breakfast');
     const menuItem = Item.filter((item) => {
         return item.category === category;
     });
+    const history = useHistory();
     // console.log(menuItem);
 
     return (
@@ -20,9 +22,8 @@ const Menu = () => {
             <div className="items mx-auto">
                 {
                     menuItem.map((menu) => {
-                        {/* console.log(menu.image); */ }
                         return (
-                            <div key={menu.id} className="item">
+                            <div key={menu.id} className="item" onClick={() => history.push(`/item/${menu.id}`)}>
                                 <img src={menu.image} alt="Item Img" />
                                 <p className="m-0">{menu.name}</p>
                                 <span>{menu.shortDescription}</span>

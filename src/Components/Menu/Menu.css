@@ -1,0 +1,33 @@
+.menu-list li{
+    display:inline;
+    padding: 0 20px;
+    cursor: pointer;
+}
+.items, .item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.items{
+    flex-wrap: wrap;
+    width: 85%;
+}
+.item{
+    width: 300px;
+    min-width: 100px;
+    flex-direction: column;
+    margin: 20px;
+}
+.item:hover{
+    box-shadow: 3px 3px 7px lightgrey, 0px 0px 3px lightgrey;
+}
+.item img{
+    width:70%;
+}
+.checkout{
+    color: white;
+    background: red;
+    width: 250px;
+    height: 45px;
+    border-radius: 5px;
+}

@@ -1,0 +1,40 @@
+.logo{
+    width: 150px;
+}
+.active{
+    padding: 12px;
+    color: black;
+}
+input,
+button{
+    border: none;
+    outline: none !important;
+}
+.login{
+    background: transparent;
+}
+.search,
+.sign-up{
+    color: white;
+    background: red;
+    border-radius: 15px;
+    padding: 5px 20px;
+}
+.search-bar{
+    width: 100%;
+    height: 60vh;
+    background: #fcf4e0;
+    background-image: url("../../Resources/bannerbackground.png");
+    background-position: center;
+    background-size: contain;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+}
+.search-engine{
+    border-radius: 15px;
+    background:white;
+    overflow: hidden;
+    padding: 0 0 0 5px;
+    height: 40px;
+    width: 35%;
+}

@@ -1,0 +1,25 @@
+.about{
+    padding: 50px;
+    background: #191919;
+}
+.row{
+    max-width: 100%;
+}
+.about img{
+    max-width: 150px;
+}
+ul li{
+    color: white;
+    list-style: none;
+}
+span{
+    color: darkgrey;
+}
+.others p{
+    display: inline;
+    margin: 0 10px;
+    color: white;
+}
+.lower-about{
+    margin-top:40px;
+}

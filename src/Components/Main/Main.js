@@ -4,15 +4,20 @@ import ChooseUs from '../ChooseUs/ChooseUs';
 import Header from '../Header/Header';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import Menu from '../Menu/Menu';
+import Signin from '../Sign/Signin';
+import Signup from '../Sign/Signup';
 
 const Main = () => {
     return (
         <>
             <Header />
-            {/* <Menu />
+            <Menu />
             <ChooseUs />
-            <About /> */}
+            <About />
             <ItemDetail />
+            <Signup />
+            <Signin />
+
         </>
     );
 };

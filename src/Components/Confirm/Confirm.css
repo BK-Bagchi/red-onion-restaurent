@@ -1,0 +1,14 @@
+.confirm .delivery-detail{
+    border-bottom: 2px solid lightgrey;
+}
+.confirm input{
+        background: lightgrey;
+        margin: 12px 0;
+        height: 45px;
+        border-radius: 5px;
+        padding: 0 10px;
+}
+.confirm input[type="submit"]{
+    background: red;
+    color: white;
+}

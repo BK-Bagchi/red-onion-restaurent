@@ -17,6 +17,7 @@ const ItemDetail = () => {
 
     return (
         thisItem.map((item) => {
+            localStorage.setItem("menuLocation", item.category)
             return (
                 <section key={item.id} className="item-detail mx-auto py-4">
                     <div className="row">

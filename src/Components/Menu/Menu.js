@@ -5,13 +5,15 @@ import Item from '../Database/Items';
 
 import { useHistory } from "react-router-dom";
 
+localStorage.setItem("menuLocation", "Breakfast")
 const Menu = () => {
-    const [category, setCategory] = useState('Breakfast');
+    let menuLocation = localStorage.getItem("menuLocation");
+
+    const [category, setCategory] = useState(menuLocation);
     const menuItem = Item.filter((item) => {
         return item.category === category;
     });
     const history = useHistory();
-    // console.log(menuItem);
 
     return (
         <section className="menu d-flex flex-column justify-content-center py-5">

@@ -21,7 +21,7 @@ const ItemDetail = () => {
                 <section key={item.id} className="item-detail mx-auto py-4">
                     <div className="row">
                         <div className="col-md-6 order-md-last d-flex justify-content-center">
-                            <img className="item-img" src={item.image} alt="Item Img" />
+                            <img className="item-img" src={require(`../../Resources/${item.image}`)} alt="Item Img" />
                         </div>
                         <div className="col-md-6 order-md-first d-flex flex-column justify-content-center">
                             <h1>{item.name}</h1>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Menu.css';
+import Image from '../../Resources/Breakfast/breakfast1.png';
 import Item from '../Database/Items';
 
 import { useHistory } from "react-router-dom";
@@ -24,7 +25,7 @@ const Menu = () => {
                     menuItem.map((menu) => {
                         return (
                             <div key={menu.id} className="item" onClick={() => history.push(`/item/${menu.id}`)}>
-                                <img src={menu.image} alt="Item Img" />
+                                <img src={require(`../../Resources/${menu.image}`)} alt="Item Img" />
                                 <p className="m-0">{menu.name}</p>
                                 <span>{menu.shortDescription}</span>
                                 <h5>${menu.price}</h5>

@@ -7,7 +7,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 13.13,
-        image: "/static/media/breakfast1.c0c0e4c8.png"
+        image: 'Breakfast/breakfast1.png'
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 13.13,
-        image: "/static/media/breakfast3.75a3f4d8.png"
+        image: 'Breakfast/breakfast2.png'
     },
     {
         id: 3,
@@ -27,7 +27,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 13.13,
-        image: "/static/media/breakfast4.e24018ae.png"
+        image: 'Breakfast/breakfast3.png'
     },
     {
         id: 4,
@@ -37,7 +37,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 13.13,
-        image: "/static/media/breakfast5.a4830bfc.png"
+        image: 'Breakfast/breakfast4.png'
     },
     {
         id: 5,
@@ -47,7 +47,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 13.13,
-        image: "/static/media/breakfast6.a0badb89.png"
+        image: 'Breakfast/breakfast5.png'
     },
     {
         id: 6,
@@ -57,7 +57,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 13.13,
-        image: "/static/media/lunch1.123861cb.png"
+        image: 'Breakfast/breakfast6.png'
     },
     {
         id: 7,
@@ -67,7 +67,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 15.13,
-        image: "/static/media/lunch2.81949c50.png"
+        image: 'lunch/lunch1.png'
     },
     {
         id: 8,
@@ -77,7 +77,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 15.13,
-        image: "/static/media/lunch3.ff08c732.png"
+        image: 'lunch/lunch2.png'
     },
     {
         id: 9,
@@ -87,7 +87,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 15.13,
-        image: "/static/media/lunch4.f1e2540f.png"
+        image: 'lunch/lunch3.png'
     },
     {
         id: 10,
@@ -97,7 +97,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 15.13,
-        image: "/static/media/lunch5.57e41ebd.png"
+        image: 'lunch/lunch4.png'
     },
     {
         id: 11,
@@ -107,7 +107,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 15.13,
-        image: "/static/media/lunch6.21f83e32.png"
+        image: 'lunch/lunch5.png'
     },
     {
         id: 12,
@@ -117,7 +117,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 15.13,
-        image: "/static/media/lunch1.123861cb.png"
+        image: 'lunch/lunch6.png'
     },
     {
         id: 13,
@@ -127,7 +127,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 7.13,
-        image: "/static/media/dinner1.f995a5b1.png"
+        image: 'Dinner/dinner1.png'
     },
     {
         id: 14,
@@ -137,7 +137,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 7.13,
-        image: "/static/media/dinner2.dadb7870.png"
+        image: 'Dinner/dinner2.png'
     },
     {
         id: 15,
@@ -147,7 +147,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 7.13,
-        image: "/static/media/dinner3.d8adbc83.png"
+        image: 'Dinner/dinner3.png'
     },
     {
         id: 16,
@@ -157,7 +157,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 7.13,
-        image: "/static/media/dinner4.64cd7183.png"
+        image: 'Dinner/dinner4.png'
     },
     {
         id: 17,
@@ -167,7 +167,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 7.13,
-        image: "/static/media/dinner5.d7ab9604.png"
+        image: 'Dinner/dinner5.png'
     },
     {
         id: 18,
@@ -177,7 +177,7 @@ const Items = [
         shortDescription: 'Lorem ipsum dolor sit amet consectetur.',
         fullDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam tenetur, commodi nesciunt alias omnis, optio repellendus esse aliquam voluptatum consequuntur fugit vitae voluptate accusamus aspernatur quidem deleniti placeat at excepturi?',
         price: 7.13,
-        image: "/static/media/dinner6.47c77dd1.png"
+        image: 'Dinner/dinner6.png'
     }
 ]
 

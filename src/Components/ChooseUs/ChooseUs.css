@@ -5,3 +5,6 @@
 .card img{
     border-radius: 10px;
 }
+.card .service-icon{
+    margin-right: 10px;
+}

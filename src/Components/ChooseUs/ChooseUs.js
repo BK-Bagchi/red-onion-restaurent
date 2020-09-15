@@ -1,6 +1,7 @@
 import React from 'react';
 import './ChooseUs.css';
 import Image from '../../Resources/Image/adult-blur-blurred-background-687824.png'
+import ChooseData from '../Database/ChooseUsData';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -26,72 +27,35 @@ const ChooseUs = () => {
             <h1>Why you choose us</h1>
             <p className="w-50">Barton waited twenty always repair in within we do. An delighted offending curiosity my us dashwoods at. Boy properous increasing surrounded</p>
             <div className="facility d-flex justify-content-center flex-wrap">
-                <Card className={`card ${classes.root}`}>
-                    <CardActionArea>
-                        <img className="w-100" src={Image} alt="Card Pic" />
-                        <CardContent className="d-flex">
-                            <div>Icon</div>
-                            <div>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    Lizard
-                                </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica
-                                </Typography>
-                            </div>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            See More
-                    </Button>
-                    </CardActions>
-                </Card>
-                <Card className={`card ${classes.root}`}>
-                    <CardActionArea>
-                        <img className="w-100" src={Image} alt="Card Pic" />
-                        <CardContent className="d-flex">
-                            <div>Icon</div>
-                            <div>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    Lizard
-                                 </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica
-                                </Typography>
-                            </div>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            See More
-                    </Button>
-                    </CardActions>
-                </Card>
-                <Card className={`card ${classes.root}`}>
-                    <CardActionArea>
-                        <img className="w-100" src={Image} alt="Card Pic" />
-                        <CardContent className="d-flex">
-                            <div>Icon</div>
-                            <div>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    Lizard
-                                </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica
-                                </Typography>
-                            </div>
-                        </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            See More
-                    </Button>
-                    </CardActions>
-                </Card>
+                {
+                    ChooseData.map((chooseData) => {
+                        return (
+                            <Card key={chooseData.id} className={`card ${classes.root}`}>
+                                <CardActionArea>
+                                    <img className="w-100" src={require(`../../Resources/Image/${chooseData.image}`)} alt="Card Pic" />
+                                    <CardContent className="d-flex">
+                                        <div className="service-icon">
+                                            <img src={require(`../../Resources/ICON/${chooseData.icon}`)} alt="" />
+                                        </div>
+                                        <div>
+                                            <Typography gutterBottom variant="h5" component="h2">
+                                                {chooseData.cause}
+                                            </Typography>
+                                            <Typography variant="body2" color="textSecondary" component="p">
+                                                {chooseData.description}
+                                            </Typography>
+                                        </div>
+                                    </CardContent>
+                                </CardActionArea>
+                                <CardActions>
+                                    <Button size="small" color="primary">
+                                        See More
+                                    </Button>
+                                </CardActions>
+                            </Card>
+                        )
+                    })
+                }
             </div>
         </section>
     );

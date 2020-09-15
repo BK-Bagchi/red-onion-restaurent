@@ -1,10 +1,12 @@
 import React from 'react';
 import './Sing.css';
 import Logo from '../../Resources/logo2.png';
+import { useHistory } from 'react-router-dom';
 const Signup = () => {
+    const history = useHistory();
     return (
         <section className="sign d-flex flex-column align-items-center">
-            <div className="head">
+            <div className="head" onClick={() => history.push("/")}>
                 <img className="logo" src={Logo} alt="Logo" />
             </div>
             <div className="form">
@@ -16,7 +18,7 @@ const Signup = () => {
                     <input type="submit" value="Sign Up" />
                 </form>
             </div>
-            <span>Already have an account?</span>
+            <span onClick={() => history.push("/logIn")}>Already have an account?</span>
         </section>
     );
 };

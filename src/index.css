@@ -16,3 +16,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+a, a:hover{
+  color: black;
+  text-decoration: none;
+}

@@ -5,7 +5,7 @@ import Confirm from '../Confirm/Confirm';
 import Header from '../Header/Header';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import Menu from '../Menu/Menu';
-import Signin from '../Sign/Signin';
+import SignIn from '../Sign/Signin';
 import Signup from '../Sign/Signup';
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -16,21 +16,29 @@ const Main = () => {
         <>
             <GlobalData.Provider value={''}>
                 <Router>
-                    <Header />
                     <Switch>
                         <Route exact path="/">
+                            <Header />
                             <Menu />
+                            <ChooseUs />
+                            <About />
                         </Route>
                         <Route path="/item/:id">
+                            <Header />
                             <ItemDetail />
+                            <ChooseUs />
+                            <About />
                         </Route>
-
-                        {/* <Signup />
-                    <Signin /> */}
-                        {/* <Confirm /> */}
+                        <Route path="/logIn">
+                            <SignIn />
+                        </Route>
+                        <Route path="/signUp">
+                            <Signup />
+                        </Route>
+                        <Route path="/cart">
+                            <Confirm />
+                        </Route>
                     </Switch>
-                    <ChooseUs />
-                    <About />
                 </Router>
             </GlobalData.Provider>
         </>

@@ -3,8 +3,10 @@ import './Header.css';
 import Logo from '../../Resources/logo2.png'
 
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Link, useHistory } from 'react-router-dom';
 
 const Header = () => {
+    const history = useHistory();
     return (
         <>
             <section className="top-nav">
@@ -18,13 +20,13 @@ const Header = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item active">
-                                <ShoppingCartIcon />
+                                <Link to="/cart"><ShoppingCartIcon /></Link>
                             </li>
                             <li className="nav-item active">
-                                <button className="login">Login</button>
+                                <button className="login" onClick={() => history.push("/logIn")}>Login</button>
                             </li>
                             <li className="nav-item active">
-                                <button className="sign-up">Sign Up</button>
+                                <button className="sign-up" onClick={() => history.push("/signUp")}>Sign Up</button>
                             </li>
                         </ul>
                     </div>

@@ -21,4 +21,5 @@
 }
 .sign span{
     color:red;
+    cursor: pointer;
 }

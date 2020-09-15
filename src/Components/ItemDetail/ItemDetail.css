@@ -4,16 +4,15 @@
 .item-img{
     width:80%;
 }
-.add,
+.add span{
+    color: white;
+}
 .back{
-    background:red;
+    background:black;
     color:white;
     width: 100px;
     height: 40px;
     border-radius: 20px;
-}
-.back{
-    Background:black;
 }
 .plus-minus{
     width: 120px;
@@ -32,4 +31,7 @@
 .amount{
     font-size: 22px;
     color: black;
+}
+.item-detail .MuiPaper-root{
+    background: red;
 }

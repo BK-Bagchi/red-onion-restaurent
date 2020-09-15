@@ -18,9 +18,12 @@
     min-width: 100px;
     flex-direction: column;
     margin: 20px;
+    transition: 0.5s;
 }
 .item:hover{
     box-shadow: 3px 3px 7px lightgrey, 0px 0px 3px lightgrey;
+    border-radius: 5px;
+    transform: scale(1.05);
 }
 .item img{
     width:70%;

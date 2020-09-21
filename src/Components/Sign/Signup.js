@@ -14,9 +14,17 @@ const Signup = () => {
                 <div className="form">
                     <form className="d-flex flex-column align-items-center">
                         <input type="text" placeholder="Enter name" />
+                        <span className="error"></span>
+
                         <input type="email" placeholder="Enter email" />
+                        <span className="error"></span>
+
                         <input type="password" placeholder="Enter password" />
+                        <span className="error"></span>
+
                         <input type="password" placeholder="Confirm password" />
+                        <span className="error"></span>
+
                         <input type="submit" value="Sign Up" />
                     </form>
                 </div>

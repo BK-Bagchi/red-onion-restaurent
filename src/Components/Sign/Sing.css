@@ -7,6 +7,13 @@
 .form{
     width: 100%;
 }
+.form .error{
+    color: red;
+    margin-top: -15px;
+}
+.form .error::before{
+    content:'*';
+}
 .sign input{
     background: lightgrey;
     margin: 15px 0;

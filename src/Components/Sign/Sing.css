@@ -23,3 +23,29 @@
     color:red;
     cursor: pointer;
 }
+.firebase-auth h4{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+}
+.firebase-auth h4::before,
+.firebase-auth h4::after{
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid black;
+    margin: auto;
+}
+.firebase-auth h4::before{
+    margin-right: 10px;
+}
+.firebase-auth h4::after{
+    margin-left: 10px;
+}
+.firebase-auth .google-icon,
+.firebase-auth .facebook-icon,
+.firebase-auth .twitter-icon{
+    color: black;
+    font-size: 50px;
+    margin: 0 10px;
+    color: red;
+}

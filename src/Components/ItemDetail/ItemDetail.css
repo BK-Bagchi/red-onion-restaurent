@@ -27,6 +27,7 @@
     width:30px;
     margin-top: 5px;;
     background: transparent;
+    cursor: pointer;
 }
 .amount{
     font-size: 22px;
@@ -34,4 +35,12 @@
 }
 .item-detail .MuiPaper-root{
     background: red;
+}
+.item-detail .MuiButtonBase-root,
+.item-detail .MuiButtonBase-root:hover{
+    background: red;
+    color: white !important;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
 }

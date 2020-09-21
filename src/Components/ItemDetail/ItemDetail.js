@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ItemDetail.css';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AddIcon from '@material-ui/icons/Add';
@@ -39,13 +39,10 @@ const ItemDetail = () => {
         setOpen(false);
     };
 
-    const buttonStyle = {
-        background: 'red',
-        color: 'white !important',
-        width: '100px',
-        height: '40px',
-        borderRadius: '20px'
-    }
+
+
+
+    const [itemAmount, setItemAmount] = useState(1);
 
     let { id } = useParams();
     const history = useHistory();
@@ -54,9 +51,13 @@ const ItemDetail = () => {
         return item.id === id;
     })
 
+    let itemPrice = thisItem[0].price * itemAmount;
+    itemPrice = Number(itemPrice.toFixed(2));
+
     return (
         thisItem.map((item) => {
             localStorage.setItem("menuLocation", item.category)
+
             return (
                 <section key={item.id} className={`item-detail mx-auto py-4${classes.root}`}>
                     <div className="row">
@@ -67,16 +68,16 @@ const ItemDetail = () => {
                             <h1>{item.name}</h1>
                             <p className="m-0">{item.fullDescription}</p>
                             <div className="d-flex my-3">
-                                <h3>${item.price}</h3>
+                                <h3>${itemPrice}</h3>
                                 <div className="plus-minus ml-4">
-                                    <button className="minus"><RemoveIcon /></button>
-                                    <span className="amount">1</span>
-                                    <button className="plus"><AddIcon /></button>
+                                    <button className="minus" onClick={() => setItemAmount(itemAmount - 1)}><RemoveIcon /></button>
+                                    <span className="amount">{itemAmount}</span>
+                                    <button className="plus" onClick={() => setItemAmount(itemAmount + 1)}><AddIcon /></button>
                                 </div>
                             </div>
                             <div className="d-flex">
                                 <button className="back mr-4" onClick={() => history.push("/")}>Back</button>
-                                <Button style={buttonStyle} variant="outlined" className="add d-flex justify-content-center align-items-center" onClick={handleClick}><ShoppingCartIcon />&nbsp; Add</Button>
+                                <Button variant="outlined" className="add d-flex justify-content-center align-items-center" onClick={handleClick}><ShoppingCartIcon />&nbsp; Add</Button>
                             </div>
                         </div>
                     </div>

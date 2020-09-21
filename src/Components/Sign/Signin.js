@@ -24,27 +24,26 @@ const Signin = () => {
         const name = e.target.name
         const value = e.target.value
         if (name === 'email') {
-            if (/\S+@\S+\.\S+/.test(value)) {
-                crossCheck('email', value, '')
-            }
-            else {
+            (/\S+@\S+\.\S+/.test(value)) ?
+                crossCheck('email', value, '') :
                 crossCheck('email', '', 'Enter a valid email')
-            }
+
         }
         else if (name === 'password') {
-            if (value.length >= 8 && /[a-zA-Z]{3,}/.test(value)) {
-                crossCheck('password', value, '')
-            }
-            else {
+            (value.length >= 8 && /[a-zA-Z]{3,}/.test(value)) ?
+                crossCheck('password', value, '') :
                 crossCheck('password', '', 'Use minimum 3 letters and total 8 digits or more')
-            }
+
         }
     }
+    console.log(loginInfo, errorMessage);
+
     const logIn = (e) => {
         e.preventDefault()
         const { email, password } = loginInfo
         if (email && password) {
             setLoginInfo({ ...loginInfo, isLoggedIn: true })
+            console.log("All done");
         }
     }
     const history = useHistory();

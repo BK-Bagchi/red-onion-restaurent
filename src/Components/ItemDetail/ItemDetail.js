@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './ItemDetail.css';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AddIcon from '@material-ui/icons/Add';
@@ -45,7 +45,6 @@ const ItemDetail = () => {
 
 
     const [itemAmount, setItemAmount] = useState(1);
-    // const [cart, setCart]= useState()
 
     let { id } = useParams();
     const history = useHistory();
@@ -54,7 +53,9 @@ const ItemDetail = () => {
 
     let itemPrice = thisItem[0].price * itemAmount;
     itemPrice = Number(itemPrice.toFixed(2));
+
     const addToCart = (item) => {
+        handleClick()
         const { id, name } = item
         const order = {
             id: id,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ItemDetail.css';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AddIcon from '@material-ui/icons/Add';
@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
+let cart = []
 const ItemDetail = () => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
@@ -43,21 +45,46 @@ const ItemDetail = () => {
 
 
     const [itemAmount, setItemAmount] = useState(1);
+    // const [cart, setCart]= useState()
 
     let { id } = useParams();
     const history = useHistory();
     id = Number(id)
-    const thisItem = Item.filter((item) => {
-        return item.id === id;
-    })
+    const thisItem = Item.filter(item => item.id === id)
 
     let itemPrice = thisItem[0].price * itemAmount;
     itemPrice = Number(itemPrice.toFixed(2));
+    const addToCart = (item) => {
+        const { id, name } = item
+        const order = {
+            id: id,
+            name: name,
+            rate: thisItem[0].price,
+            price: itemPrice,
+            amount: itemAmount
+        }
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart'))
+        }
+        const itemExists = cart.find(item => item.id === order.id)
+        if (itemExists) {
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].id === itemExists.id) {
+                    cart[i].price += order.price
+                    cart[i].amount += order.amount
+                    break
+                }
+            }
+        }
+        else {
+            cart.push(order)
+        }
+        localStorage.setItem('cart', JSON.stringify(cart))
+    }
 
     return (
         thisItem.map((item) => {
             localStorage.setItem("menuLocation", item.category)
-
             return (
                 <section key={item.id} className={`item-detail mx-auto py-4${classes.root}`}>
                     <div className="row">
@@ -77,7 +104,7 @@ const ItemDetail = () => {
                             </div>
                             <div className="d-flex">
                                 <button className="back mr-4" onClick={() => history.push("/")}>Back</button>
-                                <Button variant="outlined" className="add d-flex justify-content-center align-items-center" onClick={handleClick}><ShoppingCartIcon />&nbsp; Add</Button>
+                                <Button variant="outlined" className="add d-flex justify-content-center align-items-center" onClick={() => addToCart(item)}><ShoppingCartIcon />&nbsp; Add</Button>
                             </div>
                         </div>
                     </div>

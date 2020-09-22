@@ -12,3 +12,7 @@
     background: red;
     color: white;
 }
+.cart-item .row{
+    background:lightgrey;
+    border-radius: 15px;
+}

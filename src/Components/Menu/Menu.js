@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
 import './Menu.css';
 import Item from '../Database/Items';
-
 import { useHistory } from "react-router-dom";
 
-localStorage.setItem("menuLocation", "Breakfast")
 const Menu = () => {
-    let menuLocation = localStorage.getItem("menuLocation");
-
-    const [category, setCategory] = useState(menuLocation);
+    const [category, setCategory] = useState('Breakfast');
     const menuItem = Item.filter((item) => {
         return item.category === category;
     });
+    const [menuStyle, setMenuStyle] = useState([
+        { color: 'red', textDecoration: 'underline' },
+        { color: 'black', textDecoration: 'none' },
+        { color: 'black', textDecoration: 'none' }
+    ])
+    const menuSelector = (mealTime, index) => {
+        setCategory(mealTime)
+        for (let i = 0; i < 4; i++) {
+            (i === index) ?
+                setMenuStyle([...menuStyle], menuStyle[i] = { color: 'red', textDecoration: 'underline' }) :
+                setMenuStyle([...menuStyle], menuStyle[i] = { color: 'black', textDecoration: 'none' })
+        }
+    }
     const history = useHistory();
 
     return (
         <section className="menu d-flex flex-column justify-content-center py-5">
             <ul className="menu-list d-flex justify-content-center">
-                <li onClick={() => setCategory('Breakfast')}>Breakfast</li>
-                <li onClick={() => setCategory('Lunch')}>Lunch</li>
-                <li onClick={() => setCategory('Dinner')}>Dinner</li>
+                <li style={menuStyle[0]} onClick={() => menuSelector('Breakfast', 0)}>Breakfast</li>
+                <li style={menuStyle[1]} onClick={() => menuSelector('Lunch', 1)}>Lunch</li>
+                <li style={menuStyle[2]} onClick={() => menuSelector('Dinner', 2)}>Dinner</li>
             </ul>
             <div className="items mx-auto">
                 {

@@ -1,6 +1,5 @@
 import React from 'react';
 import './ChooseUs.css';
-import Image from '../../Resources/Image/adult-blur-blurred-background-687824.png'
 import ChooseData from '../Database/ChooseUsData';
 
 import { makeStyles } from '@material-ui/core/styles';

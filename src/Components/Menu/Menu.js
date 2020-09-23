@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Menu.css';
-import Image from '../../Resources/Breakfast/breakfast1.png';
 import Item from '../Database/Items';
 
 import { useHistory } from "react-router-dom";

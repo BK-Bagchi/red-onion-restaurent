@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import About from '../About/About';
 import ChooseUs from '../ChooseUs/ChooseUs';
 import Confirm from '../Confirm/Confirm';
@@ -8,7 +8,7 @@ import Menu from '../Menu/Menu';
 import SignIn from '../Sign/Signin';
 import Signup from '../Sign/Signup';
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export const GlobalData = React.createContext();
 const Main = () => {

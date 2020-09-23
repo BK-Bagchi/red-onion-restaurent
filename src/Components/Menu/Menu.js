@@ -4,6 +4,8 @@ import Item from '../Database/Items';
 import { useHistory } from "react-router-dom";
 
 const Menu = () => {
+    const history = useHistory();
+
     const [category, setCategory] = useState('Breakfast');
     const menuItem = Item.filter((item) => {
         return item.category === category;
@@ -21,7 +23,11 @@ const Menu = () => {
                 setMenuStyle([...menuStyle], menuStyle[i] = { color: 'black', textDecoration: 'none' })
         }
     }
-    const history = useHistory();
+    const decideCartPath = () => {
+        const cartItems = JSON.parse(localStorage.getItem('cart'))
+        if (cartItems)
+            history.push('/cart')
+    }
 
     return (
         <section className="menu d-flex flex-column justify-content-center py-5">
@@ -44,7 +50,7 @@ const Menu = () => {
                     })
                 }
             </div>
-            <button className="checkout mx-auto" disabled>Checkout Your Food</button>
+            <button className="checkout mx-auto" onClick={decideCartPath}>Checkout Your Food</button>
         </section>
     );
 };

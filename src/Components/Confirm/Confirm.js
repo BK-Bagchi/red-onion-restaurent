@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Confirm.css';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Items from '../Database/Items';
 import NavBar from '../Header/NavBar';
+import { GlobalData } from '../Main/Main';
 
 const Confirm = () => {
-    const [reload, setReload] = useState(false)
+    // const d = useContext(GlobalData)
+    // const [a, b] = d.login
+    // b(10)
+    const [deliveryDetail, setDeliveryDetail] = useState({})
+    const [error, setError] = useState({})
     const [addedToCart, setToCart] = useState(JSON.parse(localStorage.getItem('cart')))
     const [billingState, setBillingState] = useState({ tax: 5, deliveryFee: 0, totalItem: 0, subTotalPrice: 0 })
     const { tax, totalItem, deliveryFee, subTotalPrice } = billingState
@@ -24,9 +29,16 @@ const Confirm = () => {
         }
     }
     const deleteItem = (itemId) => {
-        setReload(true)
         setItemAmount(itemAmount.filter(item => item.id !== itemId))
     }
+    const handelDeliveryForm = () => {
+
+    }
+    const submitDeliveryForm = (e) => {
+        e.preventDefault()
+    }
+
+
     useEffect(() => {
         setToCart(itemAmount)
         setBillingState({
@@ -35,7 +47,7 @@ const Confirm = () => {
             totalItem: addedToCart.reduce((sum, i) => { return sum + i.amount }, 0),
             subTotalPrice: addedToCart.reduce((sum, i) => { return sum + i.price }, 0)
         })
-    }, [itemAmount, setReload])
+    }, [itemAmount])
     localStorage.setItem('cart', JSON.stringify(itemAmount))
     localStorage.setItem('cartTotalItems', totalItem)
 
@@ -47,17 +59,16 @@ const Confirm = () => {
                     <div className="col-lg-6 d-flex flex-column">
                         <p className="delivery-detail">Edit Delivery Details</p>
                         <form className="d-flex flex-column">
-                            <input type="text" placeholder="Enter Delivery Address" />
-                            <input type="number" placeholder="Enter Mobile Number" />
-                            <input type="text" placeholder="Enter Delivery Instructions" />
-                            <input type="submit" value="Save & Continue" />
+                            <input name="address" type="text" placeholder="Enter Delivery Address" onBlur={handelDeliveryForm} />
+                            <input name="mobile" type="number" placeholder="Enter Mobile Number" onBlur={handelDeliveryForm} />
+                            <textarea name="instruction" rows="10" cols="50" placeholder="Enter delivery instruction" onBlur={handelDeliveryForm}  ></textarea>
                         </form>
                     </div>
                     <div className="col-lg-6">
                         <h6>From <strong>Gulistan Plaza Restaurant GPR</strong></h6>
                         <p className="m-0">Arriving in 20-30 min</p>
                         <p className="m-0">107 Rd No 8</p>
-                        <form className="cart-form">
+                        <form className="cart-form" onSubmit={submitDeliveryForm}>
                             <div className="cart-item">
                                 {
                                     itemAmount.map((item, index) => {

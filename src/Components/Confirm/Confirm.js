@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './Confirm.css';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import CancelIcon from '@material-ui/icons/Cancel';
 import Items from '../Database/Items';
 import NavBar from '../Header/NavBar';
 
 const Confirm = () => {
+    const [reload, setReload] = useState(false)
     const [addedToCart, setToCart] = useState(JSON.parse(localStorage.getItem('cart')))
     const [billingState, setBillingState] = useState({ tax: 5, deliveryFee: 0, totalItem: 0, subTotalPrice: 0 })
     const { tax, totalItem, deliveryFee, subTotalPrice } = billingState
@@ -21,6 +23,10 @@ const Confirm = () => {
                 itemAmount[i].amount += amount)
         }
     }
+    const deleteItem = (itemId) => {
+        setReload(true)
+        setItemAmount(itemAmount.filter(item => item.id !== itemId))
+    }
     useEffect(() => {
         setToCart(itemAmount)
         setBillingState({
@@ -29,7 +35,7 @@ const Confirm = () => {
             totalItem: addedToCart.reduce((sum, i) => { return sum + i.amount }, 0),
             subTotalPrice: addedToCart.reduce((sum, i) => { return sum + i.price }, 0)
         })
-    }, [itemAmount])
+    }, [itemAmount, setReload])
     localStorage.setItem('cart', JSON.stringify(itemAmount))
     localStorage.setItem('cartTotalItems', totalItem)
 
@@ -57,14 +63,17 @@ const Confirm = () => {
                                     itemAmount.map((item, index) => {
                                         return (
                                             <div key={item.id} className="row m-0 my-2 d-flex align-items-center">
-                                                <div className="col-md-4">
+                                                <div className="col-1" onClick={() => deleteItem(item.id)}>
+                                                    <CancelIcon />
+                                                </div>
+                                                <div className="col-4">
                                                     <img className="w-100" src={require(`../../Resources/${Items[item.id - 1].image}`)} alt="Item Img" />
                                                 </div>
-                                                <div className="col-md-4">
+                                                <div className="col-3">
                                                     <p className="m-0 font-italic">{item.name}</p>
                                                     <span className="font-weight-bold text-dark">${(item.price).toFixed(2)}</span>
                                                 </div>
-                                                <div className="col-md-4">
+                                                <div className="col-4">
                                                     <div className="plus-minus">
                                                         <button className="minus" onClick={(e) => handelItemAmount(e, index, Items[item.id].price, -1)}><RemoveIcon /></button>
                                                         <span className="amount bg">{item.amount}</span>

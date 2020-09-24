@@ -19,3 +19,7 @@
 .cart-calculation .row div{
     padding: 0 10px;
 }
+.cart-item .col-1{
+    cursor: pointer;
+    color: red;
+}

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import './ItemDetail.css';
+import About from '../About/About';
+import ChooseUs from '../ChooseUs/ChooseUs';
+import Header from '../Header/Header';
+
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
@@ -86,34 +90,39 @@ const ItemDetail = () => {
     return (
         thisItem.map((item) => {
             return (
-                <section key={item.id} className={`item-detail mx-auto py-4${classes.root}`}>
-                    <div className="row">
-                        <div className="col-md-6 order-md-last d-flex justify-content-center">
-                            <img className="item-img" src={require(`../../Resources/${item.image}`)} alt="Item Img" />
-                        </div>
-                        <div className="col-md-6 order-md-first d-flex flex-column justify-content-center">
-                            <h1>{item.name}</h1>
-                            <p className="m-0">{item.fullDescription}</p>
-                            <div className="d-flex my-3">
-                                <h3>${itemPrice}</h3>
-                                <div className="plus-minus ml-4">
-                                    <button className="minus" onClick={() => setItemAmount(itemAmount - 1)}><RemoveIcon /></button>
-                                    <span className="amount">{itemAmount}</span>
-                                    <button className="plus" onClick={() => setItemAmount(itemAmount + 1)}><AddIcon /></button>
+                <>
+                    <Header />
+                    <section key={item.id} className={`item-detail mx-auto py-4${classes.root}`}>
+                        <div className="row">
+                            <div className="col-md-6 order-md-last d-flex justify-content-center">
+                                <img className="item-img" src={require(`../../Resources/${item.image}`)} alt="Item Img" />
+                            </div>
+                            <div className="col-md-6 order-md-first d-flex flex-column justify-content-center">
+                                <h1>{item.name}</h1>
+                                <p className="m-0">{item.fullDescription}</p>
+                                <div className="d-flex my-3">
+                                    <h3>${itemPrice}</h3>
+                                    <div className="plus-minus ml-4">
+                                        <button className="minus" onClick={() => setItemAmount(itemAmount - 1)}><RemoveIcon /></button>
+                                        <span className="amount">{itemAmount}</span>
+                                        <button className="plus" onClick={() => setItemAmount(itemAmount + 1)}><AddIcon /></button>
+                                    </div>
+                                </div>
+                                <div className="d-flex">
+                                    <button className="back mr-4" onClick={() => history.push("/")}>Back</button>
+                                    <Button variant="outlined" className="add d-flex justify-content-center align-items-center" onClick={() => addToCart(item)}><ShoppingCartIcon />&nbsp; Add</Button>
                                 </div>
                             </div>
-                            <div className="d-flex">
-                                <button className="back mr-4" onClick={() => history.push("/")}>Back</button>
-                                <Button variant="outlined" className="add d-flex justify-content-center align-items-center" onClick={() => addToCart(item)}><ShoppingCartIcon />&nbsp; Add</Button>
-                            </div>
                         </div>
-                    </div>
-                    <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                        <Alert onClose={handleClose} severity="success">
-                            Item added to cart successfully
+                        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                            <Alert onClose={handleClose} severity="success">
+                                Item added to cart successfully
                         </Alert>
-                    </Snackbar>
-                </section>
+                        </Snackbar>
+                    </section>
+                    <ChooseUs />
+                    <About />
+                </>
             )
         })
     );

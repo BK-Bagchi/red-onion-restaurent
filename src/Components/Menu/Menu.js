@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './Menu.css';
+import About from '../About/About';
+import ChooseUs from '../ChooseUs/ChooseUs';
+import Header from '../Header/Header';
 import Item from '../Database/Items';
 import { useHistory } from "react-router-dom";
 
@@ -30,28 +33,33 @@ const Menu = () => {
     }
 
     return (
-        <section className="menu d-flex flex-column justify-content-center py-5">
-            <ul className="menu-list d-flex justify-content-center">
-                <li style={menuStyle[0]} onClick={() => menuSelector('Breakfast', 0)}>Breakfast</li>
-                <li style={menuStyle[1]} onClick={() => menuSelector('Lunch', 1)}>Lunch</li>
-                <li style={menuStyle[2]} onClick={() => menuSelector('Dinner', 2)}>Dinner</li>
-            </ul>
-            <div className="items mx-auto">
-                {
-                    menuItem.map((menu) => {
-                        return (
-                            <div key={menu.id} className="item" onClick={() => history.push(`/item/${menu.id}`)}>
-                                <img src={require(`../../Resources/${menu.image}`)} alt="Item Img" />
-                                <p className="m-0">{menu.name}</p>
-                                <span>{menu.shortDescription}</span>
-                                <h5>${menu.price}</h5>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-            <button className="checkout mx-auto" onClick={decideCartPath}>Checkout Your Food</button>
-        </section>
+        <>
+            <Header />
+            <section className="menu d-flex flex-column justify-content-center py-5">
+                <ul className="menu-list d-flex justify-content-center">
+                    <li style={menuStyle[0]} onClick={() => menuSelector('Breakfast', 0)}>Breakfast</li>
+                    <li style={menuStyle[1]} onClick={() => menuSelector('Lunch', 1)}>Lunch</li>
+                    <li style={menuStyle[2]} onClick={() => menuSelector('Dinner', 2)}>Dinner</li>
+                </ul>
+                <div className="items mx-auto">
+                    {
+                        menuItem.map((menu) => {
+                            return (
+                                <div key={menu.id} className="item" onClick={() => history.push(`/item/${menu.id}`)}>
+                                    <img src={require(`../../Resources/${menu.image}`)} alt="Item Img" />
+                                    <p className="m-0">{menu.name}</p>
+                                    <span>{menu.shortDescription}</span>
+                                    <h5>${menu.price}</h5>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <button className="checkout mx-auto" onClick={decideCartPath}>Checkout Your Food</button>
+            </section>
+            <ChooseUs />
+            <About />
+        </>
     );
 };
 

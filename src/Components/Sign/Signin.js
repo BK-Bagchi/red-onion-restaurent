@@ -3,6 +3,7 @@ import './Sing.css';
 import Logo from '../../Resources/logo2.png';
 import { useHistory } from 'react-router-dom';
 import Firebase from './Firebase';
+import NavBar from '../Header/NavBar';
 
 const Signin = () => {
     const [loginInfo, setLoginInfo] = useState({
@@ -49,6 +50,7 @@ const Signin = () => {
     const history = useHistory();
     return (
         <>
+            <NavBar />
             <section className="sign d-flex flex-column align-items-center">
                 <div className="head" onClick={() => history.push("/")}>
                     <img className="logo" src={Logo} alt="Logo" />

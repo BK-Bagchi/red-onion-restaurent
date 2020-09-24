@@ -1,8 +1,5 @@
 import React from 'react';
-import About from '../About/About';
-import ChooseUs from '../ChooseUs/ChooseUs';
 import Confirm from '../Confirm/Confirm';
-import Header from '../Header/Header';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import Menu from '../Menu/Menu';
 import SignIn from '../Sign/Signin';
@@ -18,16 +15,10 @@ const Main = () => {
                 <Router>
                     <Switch>
                         <Route exact path="/">
-                            <Header />
                             <Menu />
-                            <ChooseUs />
-                            <About />
                         </Route>
                         <Route path="/item/:id">
-                            <Header />
                             <ItemDetail />
-                            <ChooseUs />
-                            <About />
                         </Route>
                         <Route path="/logIn">
                             <SignIn />

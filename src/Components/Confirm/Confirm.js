@@ -1,18 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Confirm.css';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Items from '../Database/Items';
 import NavBar from '../Header/NavBar';
-import { GlobalData } from '../Main/Main';
 
 const Confirm = () => {
-    // const d = useContext(GlobalData)
-    // const [a, b] = d.login
-    // b(10)
-    const [deliveryDetail, setDeliveryDetail] = useState({})
-    const [error, setError] = useState({})
+    // const [deliveryDetail, setDeliveryDetail] = useState({})
+    // const [error, setError] = useState({})
     const [addedToCart, setToCart] = useState(JSON.parse(localStorage.getItem('cart')))
     const [billingState, setBillingState] = useState({ tax: 5, deliveryFee: 0, totalItem: 0, subTotalPrice: 0 })
     const { tax, totalItem, deliveryFee, subTotalPrice } = billingState

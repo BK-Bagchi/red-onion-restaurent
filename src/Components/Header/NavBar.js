@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 import Logo from '../../Resources/logo2.png'
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import MenuItem from '@material-ui/core/MenuItem';

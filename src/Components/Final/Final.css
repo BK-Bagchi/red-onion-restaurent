@@ -1,0 +1,27 @@
+.final-segment .detail{
+    background: lightgrey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.final-segment .description,
+.final-segment .rider{
+    background:white;
+    border-radius:7px;
+    margin: 10px 0;
+    padding: 10px;
+    width:95%;
+}
+.final-segment .image1{
+    width: 120px;
+    margin: 10px 0 0 0;
+}
+.final-segment .contact{
+    background: red;
+    color: white;
+    width: 95%;
+    height: 45px;
+    border-radius: 7px;
+    margin: 15px 0;
+}

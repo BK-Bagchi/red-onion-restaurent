@@ -38,9 +38,6 @@ button{
     height: 40px;
     width: 35%;
 }
-.top-nav .MuiButtonBase-root{
-    /* padding:12px; */
-}
 .navbar-nav{
     display: flex;
     align-items: center;

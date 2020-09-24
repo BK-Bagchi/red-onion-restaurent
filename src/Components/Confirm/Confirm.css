@@ -16,3 +16,6 @@
     background:lightgrey;
     border-radius: 15px;
 }
+.cart-calculation .row div{
+    padding: 0 10px;
+}

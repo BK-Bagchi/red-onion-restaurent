@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Confirm.css';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
@@ -6,7 +6,11 @@ import Items from '../Database/Items';
 import NavBar from '../Header/NavBar';
 
 const Confirm = () => {
-    const addedToCart = JSON.parse(localStorage.getItem('cart'))
+    const [addedToCart, setToCart] = useState(JSON.parse(localStorage.getItem('cart')))
+    const [billingState, setBillingState] = useState({ tax: 5, deliveryFee: 0, totalItem: 0, subTotalPrice: 0 })
+    const { tax, totalItem, deliveryFee, subTotalPrice } = billingState
+    const totalPrice = ((subTotalPrice * tax) / 100 + deliveryFee) + subTotalPrice
+
     const [itemAmount, setItemAmount] = useState(addedToCart)
     const handelItemAmount = (e, i, rate, amount) => {
         e.preventDefault()
@@ -17,7 +21,17 @@ const Confirm = () => {
                 itemAmount[i].amount += amount)
         }
     }
+    useEffect(() => {
+        setToCart(itemAmount)
+        setBillingState({
+            ...billingState,
+            deliveryFee: 10,
+            totalItem: addedToCart.reduce((sum, i) => { return sum + i.amount }, 0),
+            subTotalPrice: addedToCart.reduce((sum, i) => { return sum + i.price }, 0)
+        })
+    }, [itemAmount])
     localStorage.setItem('cart', JSON.stringify(itemAmount))
+    localStorage.setItem('cartTotalItems', totalItem)
 
     return (
         <>
@@ -44,7 +58,7 @@ const Confirm = () => {
                                         return (
                                             <div key={item.id} className="row m-0 my-2 d-flex align-items-center">
                                                 <div className="col-md-4">
-                                                    <img className="w-100" src={require(`../../Resources/${Items[item.id].image}`)} alt="Item Img" />
+                                                    <img className="w-100" src={require(`../../Resources/${Items[item.id - 1].image}`)} alt="Item Img" />
                                                 </div>
                                                 <div className="col-md-4">
                                                     <p className="m-0 font-italic">{item.name}</p>
@@ -61,6 +75,22 @@ const Confirm = () => {
                                         )
                                     })
                                 }
+                            </div>
+                            <div className="cart-calculation d-flex justify-content-center">
+                                <div className="row">
+                                    <div className="w-100 d-flex justify-content-between">
+                                        <h5>Subtotal ({totalItem})items</h5><h6>${(subTotalPrice).toFixed(2)}</h6>
+                                    </div>
+                                    <div className="w-100 d-flex justify-content-between">
+                                        <h5>Tax</h5><h6>{tax}%</h6>
+                                    </div>
+                                    <div className="w-100 d-flex justify-content-between">
+                                        <h5>Delivery Fee</h5><h6>${deliveryFee}</h6>
+                                    </div>
+                                    <div className="w-100 d-flex justify-content-between">
+                                        <h5>Total</h5><h6>${(totalPrice).toFixed(2)}</h6>
+                                    </div>
+                                </div>
                             </div>
                             <input className="w-100" type="submit" value="Place Order" />
                         </form>

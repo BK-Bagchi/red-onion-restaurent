@@ -4,7 +4,11 @@ import Logo from '../../Resources/logo2.png'
 import { Link, useHistory } from 'react-router-dom';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
+import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
 const NavBar = () => {
+    const items = localStorage.getItem('cartTotalItems')
     const history = useHistory();
     return (
         <section className="top-nav">
@@ -17,9 +21,13 @@ const NavBar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ml-auto">
-                        <li className="nav-item active">
-                            <Link to="/cart"><ShoppingCartIcon /></Link>
-                        </li>
+                        <MenuItem className="nav-item active" onClick={() => history.push("/cart")}>
+                            <IconButton aria-label="show 4 new mails" color="inherit">
+                                <Badge badgeContent={items} color="secondary">
+                                    <ShoppingCartIcon style={{ color: 'black' }} />
+                                </Badge>
+                            </IconButton>
+                        </MenuItem>
                         <li className="nav-item active">
                             <button className="login" onClick={() => history.push("/logIn")}>Login</button>
                         </li>

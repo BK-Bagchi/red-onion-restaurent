@@ -17,29 +17,34 @@ const Firebase = () => {
             photoURL: photoURL
         })
     }
+    const providerFunction = provider => {
+        firebase.auth().signInWithPopup(provider).then(result => {
+            const { displayName, email, photoURL } = result.user
+            collectLoginInfo(displayName, email, photoURL)
+        }).catch(error => {
+            const { code, message, email, credential } = error
+            console.log(code, "| |", message, "| |", email, "| |", credential)
+        });
+    }
 
     /*---------start---------google signIn area---------start---------*/
     const googleSignIn = () => {
         const provider = new firebase.auth.GoogleAuthProvider()
-        firebase.auth().signInWithPopup(provider).then(function (result) {
-            const { displayName, email, photoURL } = result.user
-            collectLoginInfo(displayName, email, photoURL)
-        }).catch(function (error) {
-            const { code, message, email, credential } = error;
-            console.log(code, "| |", message, "| |", email, "| |", credential);
-        });
+        providerFunction(provider)
     }
     /*---------end---------google signIn area---------end---------*/
 
     /*---------start---------facebook signIn area---------start---------*/
     const facebookSignIn = () => {
-
+        const provider = new firebase.auth.FacebookAuthProvider()
+        providerFunction(provider)
     }
     /*---------end---------facebook signIn area---------end---------*/
 
     /*---------start---------twitter signIn area---------start---------*/
     const twitterSignIn = () => {
-
+        const provider = new firebase.auth.TwitterAuthProvider()
+        providerFunction(provider)
     }
     /*---------end---------twitter signIn area---------end---------*/
     return (

@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Sing.css';
 import Logo from '../../Resources/logo2.png';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Firebase from './Firebase';
 import NavBar from '../Header/NavBar';
+import * as firebase from "firebase/app"
+import "firebase/auth"
+import { GlobalData } from '../Main/Main';
 
 const Signin = () => {
-    const [loginInfo, setLoginInfo] = useState({
-        isLoggedIn: false,
-        email: '',
-        password: ''
-    })
+    let history = useHistory();
+    let location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
+
+    const [loginInfo, setLoginInfo] = useContext(GlobalData).login
     const [errorMessage, setErrorMessage] = useState({
         email: '',
         password: '',
@@ -37,17 +40,24 @@ const Signin = () => {
 
         }
     }
-    console.log(loginInfo, errorMessage);
 
     const logIn = (e) => {
         e.preventDefault()
         const { email, password } = loginInfo
         if (email && password) {
-            setLoginInfo({ ...loginInfo, isLoggedIn: true })
-            console.log("All done");
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    setLoginInfo({ ...loginInfo, isLoggedIn: true })
+                    history.replace(from);
+                })
+                .catch(error => {
+                    const { code, message, email, credential } = error
+                    console.log(code, "| |", message, "| |", email, "| |", credential)
+                    crossCheck('password', '', message)
+                });
         }
     }
-    const history = useHistory();
+
     return (
         <>
             <NavBar />

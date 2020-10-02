@@ -10,17 +10,15 @@ import { GlobalData } from '../Main/Main';
 firebase.initializeApp(firebaseConfig);
 const Firebase = () => {
     const setLoginInfo = useContext(GlobalData).login[1]
-    const collectLoginInfo = (displayName, email, photoURL) => {
-        setLoginInfo({
-            displayName: displayName,
-            email: email,
-            photoURL: photoURL
-        })
-    }
     const providerFunction = provider => {
         firebase.auth().signInWithPopup(provider).then(result => {
             const { displayName, email, photoURL } = result.user
-            collectLoginInfo(displayName, email, photoURL)
+            setLoginInfo({
+                isLoggedIn: true,
+                displayName: displayName,
+                email: email,
+                photoURL: photoURL
+            })
         }).catch(error => {
             const { code, message, email, credential } = error
             console.log(code, "| |", message, "| |", email, "| |", credential)

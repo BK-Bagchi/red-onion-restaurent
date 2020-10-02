@@ -4,6 +4,8 @@ import Logo from '../../Resources/logo2.png';
 import { useHistory } from 'react-router-dom';
 import Firebase from './Firebase';
 import NavBar from '../Header/NavBar';
+import * as firebase from "firebase/app"
+import "firebase/auth"
 
 let tempPassword = ''
 const Signup = () => {
@@ -57,10 +59,16 @@ const Signup = () => {
         e.preventDefault()
         const { userName, email, password } = signUpInfo
         if (userName && email && password) {
-            setSignUpInfo({ ...signUpInfo, isLoggedIn: true })
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(() => history.push('/login'))
+                .catch(error => {
+                    const { code, message, email, credential } = error
+                    console.log(code, "| |", message, "| |", email, "| |", credential)
+                    crossCheck('password', '', 'tempPassword', message)
+                });
         }
     }
-    console.log(signUpInfo);
+
     return (
         <>
             <NavBar />

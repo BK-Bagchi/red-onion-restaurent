@@ -5,10 +5,11 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Items from '../Database/Items';
 import NavBar from '../Header/NavBar';
+import { useHistory } from 'react-router-dom';
 
 const Confirm = () => {
-    // const [deliveryDetail, setDeliveryDetail] = useState({})
-    // const [error, setError] = useState({})
+    const history = useHistory()
+
     const [addedToCart, setToCart] = useState(JSON.parse(localStorage.getItem('cart')))
     const [billingState, setBillingState] = useState({ tax: 5, deliveryFee: 0, totalItem: 0, subTotalPrice: 0 })
     const { tax, totalItem, deliveryFee, subTotalPrice } = billingState
@@ -108,7 +109,7 @@ const Confirm = () => {
                                     </div>
                                 </div>
                             </div>
-                            <input className="w-100" type="submit" value="Place Order" />
+                            <input className="w-100" type="submit" value="Place Order" onClick={() => history.push('/finished')} />
                         </form>
                     </div>
                 </div>

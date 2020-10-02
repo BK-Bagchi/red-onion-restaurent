@@ -32,9 +32,9 @@ const Main = () => {
                         <Route path="/cart">
                             <Confirm />
                         </Route>
-                        <Route path="/finished">
+                        <PrivateRoute path="/finished">
                             <Final />
-                        </Route>
+                        </PrivateRoute>
                     </Switch>
                 </Router>
             </GlobalData.Provider>

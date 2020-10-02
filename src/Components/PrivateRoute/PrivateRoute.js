@@ -3,14 +3,12 @@ import { Redirect, Route } from 'react-router-dom';
 import { GlobalData } from '../Main/Main';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const aboutLogin = useContext(GlobalData)
-    const [loginInfo, setLoginInfo] = aboutLogin.login
-    console.log(aboutLogin)
+    const loginInfo = useContext(GlobalData).login[0]
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                loginInfo.isLogedIn ? (
+                loginInfo.isLoggedIn ? (
                     children
                 ) : (
                         <Redirect

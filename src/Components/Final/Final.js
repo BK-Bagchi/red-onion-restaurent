@@ -3,8 +3,13 @@ import './Final.css'
 import NavBar from '../Header/NavBar';
 import Image1 from '../../Resources/Image/Group 1151.png'
 import Image2 from '../../Resources/Image/Group 1152.png'
+import { useHistory } from 'react-router-dom';
 
 const Final = () => {
+    localStorage.setItem('cart', [])
+    localStorage.setItem('cartTotalItems', 0)
+    const history = useHistory()
+
     return (
         <>
             <NavBar />
@@ -18,15 +23,15 @@ const Final = () => {
                         <div className="description">
                             <div>
                                 <h5>Your Location</h5>
-                                <p>107 Rd No 8</p>
+                                <p>107 Rd No 8, Sagorpara</p>
                             </div>
                             <div>
                                 <h5>Shop Address</h5>
-                                <p>Gulistan Plaza</p>
+                                <p>Theme Omar Plaza</p>
                             </div>
                         </div>
                         <div className="pick-time align-self-start ml-2">
-                            <h3>00:00</h3>
+                            <h3>00:30 Hr</h3>
                             <p>Estimated Delivery Time</p>
                         </div>
                         <div className="rider row">
@@ -34,11 +39,11 @@ const Final = () => {
                                 <img className="w-100" src={Image2} alt="Image2" />
                             </div>
                             <div className="col-8">
-                                <h5>Name</h5>
+                                <h5>Anonymous</h5>
                                 <p>Your Rider</p>
                             </div>
                         </div>
-                        <button className="contact">Contact</button>
+                        <button className="contact" onClick={() => history.push('/')}>Done</button>
                     </div>
                 </div>
             </section>

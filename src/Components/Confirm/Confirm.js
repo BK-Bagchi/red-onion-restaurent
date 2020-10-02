@@ -9,6 +9,12 @@ import { useHistory } from 'react-router-dom';
 
 const Confirm = () => {
     const history = useHistory()
+    const [deliveryDetails, setDeliveryDetails] = useState({
+        address: '', number: '', instruction: ''
+    })
+    const [errorMessage, setErrorMessage] = useState({
+        address: '', number: '', instruction: ''
+    })
 
     const [addedToCart, setToCart] = useState(JSON.parse(localStorage.getItem('cart')))
     const [billingState, setBillingState] = useState({ tax: 5, deliveryFee: 0, totalItem: 0, subTotalPrice: 0 })
@@ -28,11 +34,34 @@ const Confirm = () => {
     const deleteItem = (itemId) => {
         setItemAmount(itemAmount.filter(item => item.id !== itemId))
     }
-    const handelDeliveryForm = () => {
-
+    const handelDeliveryForm = (e) => {
+        const name = e.target.name
+        const value = e.target.value
+        if (name === 'address') {
+            (/[a-zA-Z]{6,}/.test(value) || value.length >= 8) ?
+                crossCheck('address', value, 'address', '') :
+                crossCheck('address', '', 'address', 'Enter Address in Detail')
+        }
+        else if (name === 'mobile') {
+            (value.length === 11) ?
+                crossCheck('number', value, 'number', '') :
+                crossCheck('number', '', 'number', 'Enter Valid Phone Number')
+        }
+        else if (name === 'instruction') {
+            setDeliveryDetails({ ...deliveryDetails, instruction: value })
+        }
+    }
+    const crossCheck = (detailKey, detailMessage, errKey, errMessage) => {
+        setDeliveryDetails({ ...deliveryDetails, [detailKey]: detailMessage })
+        setErrorMessage({ ...errorMessage, [errKey]: errMessage })
     }
     const submitDeliveryForm = (e) => {
         e.preventDefault()
+        const { address, number } = deliveryDetails
+        if (address && number)
+            history.push('/finished')
+        else
+            setErrorMessage({ ...errorMessage, instruction: 'Please fill the delivery details' })
     }
 
 
@@ -57,7 +86,11 @@ const Confirm = () => {
                         <p className="delivery-detail">Edit Delivery Details</p>
                         <form className="d-flex flex-column">
                             <input name="address" type="text" placeholder="Enter Delivery Address" onBlur={handelDeliveryForm} />
+                            <span className="error">{errorMessage.address}</span>
+
                             <input name="mobile" type="number" placeholder="Enter Mobile Number" onBlur={handelDeliveryForm} />
+                            <span className="error">{errorMessage.number}</span>
+
                             <textarea name="instruction" rows="10" cols="50" placeholder="Enter delivery instruction" onBlur={handelDeliveryForm}  ></textarea>
                         </form>
                     </div>
@@ -109,7 +142,8 @@ const Confirm = () => {
                                     </div>
                                 </div>
                             </div>
-                            <input className="w-100" type="submit" value="Place Order" onClick={() => history.push('/finished')} />
+                            <span className="error">{errorMessage.instruction}</span>
+                            <input className="w-100" type="submit" value="Place Order" />
                         </form>
                     </div>
                 </div>

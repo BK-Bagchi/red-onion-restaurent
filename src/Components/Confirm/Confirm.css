@@ -30,3 +30,10 @@
     cursor: pointer;
     color: red;
 }
+.confirm .error{
+    color: red;
+    margin-top: -15px;
+}
+.confirm .error::before{
+    content:'*';
+}

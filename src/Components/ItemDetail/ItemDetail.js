@@ -85,8 +85,7 @@ const ItemDetail = () => {
             cart.push(order)
         }
         localStorage.setItem('cart', JSON.stringify(cart))
-        const cartTotalItems =
-            localStorage.setItem('cartTotalItems', (JSON.parse(localStorage.getItem('cartTotalItems')) + order.amount))
+        localStorage.setItem('cartTotalItems', (JSON.parse(localStorage.getItem('cartTotalItems')) + order.amount))
     }
     return (
         thisItem.map((item) => {

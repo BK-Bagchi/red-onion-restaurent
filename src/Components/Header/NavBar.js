@@ -10,6 +10,12 @@ import Badge from '@material-ui/core/Badge';
 const NavBar = () => {
     const items = localStorage.getItem('cartTotalItems')
     const history = useHistory();
+    const decideCartPath = () => {
+        const cartItems = JSON.parse(localStorage.getItem('cart'))
+        if (cartItems.length)
+            history.push('/cart')
+    }
+
     return (
         <section className="top-nav">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,7 +27,7 @@ const NavBar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ml-auto">
-                        <MenuItem className="nav-item active" onClick={() => history.push("/cart")}>
+                        <MenuItem className="nav-item active" onClick={decideCartPath}>
                             <IconButton aria-label="show 4 new mails" color="inherit">
                                 <Badge badgeContent={items} color="secondary">
                                     <ShoppingCartIcon style={{ color: 'black' }} />

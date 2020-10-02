@@ -28,7 +28,7 @@ const Menu = () => {
     }
     const decideCartPath = () => {
         const cartItems = JSON.parse(localStorage.getItem('cart'))
-        if (cartItems)
+        if (cartItems.length)
             history.push('/cart')
     }
 

@@ -6,9 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import firebaseConfig from './FirebaseConfig';
 import { GlobalData } from '../Main/Main';
+import { useHistory, useLocation } from 'react-router-dom';
 
 firebase.initializeApp(firebaseConfig);
 const Firebase = () => {
+    let history = useHistory();
+    let location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
+
     const setLoginInfo = useContext(GlobalData).login[1]
     const providerFunction = provider => {
         firebase.auth().signInWithPopup(provider).then(result => {
@@ -19,6 +24,7 @@ const Firebase = () => {
                 email: email,
                 photoURL: photoURL
             })
+            history.replace(from);
         }).catch(error => {
             const { code, message, email, credential } = error
             console.log(code, "| |", message, "| |", email, "| |", credential)

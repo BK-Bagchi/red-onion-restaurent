@@ -31,13 +31,11 @@ const Signin = () => {
             (/\S+@\S+\.\S+/.test(value)) ?
                 crossCheck('email', value, '') :
                 crossCheck('email', '', 'Enter a valid email')
-
         }
         else if (name === 'password') {
             (value.length >= 8 && /[a-zA-Z]{3,}/.test(value)) ?
                 crossCheck('password', value, '') :
                 crossCheck('password', '', 'Use minimum 3 letters and total 8 digits or more')
-
         }
     }
 

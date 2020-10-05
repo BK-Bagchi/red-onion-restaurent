@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 const NavBar = () => {
+    const loginInfo = JSON.parse(sessionStorage.getItem('loginInfo'))
     const items = localStorage.getItem('cartTotalItems')
     const history = useHistory();
     const decideCartPath = () => {
@@ -34,12 +35,18 @@ const NavBar = () => {
                                 </Badge>
                             </IconButton>
                         </MenuItem>
-                        <li className="nav-item active">
-                            <button className="login" onClick={() => history.push("/logIn")}>Login</button>
-                        </li>
-                        <li className="nav-item active">
-                            <button className="sign-up" onClick={() => history.push("/signUp")}>Sign Up</button>
-                        </li>
+                        {
+                            loginInfo.isLoggedIn ?
+                                <li className="nav-item active">{loginInfo.displayName}</li> :
+                                <>
+                                    <li className="nav-item active">
+                                        <button className="login" onClick={() => history.push("/logIn")}>Login</button>
+                                    </li>
+                                    <li className="nav-item active">
+                                        <button className="sign-up" onClick={() => history.push("/signUp")}>Sign Up</button>
+                                    </li>
+                                </>
+                        }
                     </ul>
                 </div>
             </nav>

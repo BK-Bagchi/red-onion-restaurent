@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 const NavBar = () => {
-    const loginInfo = JSON.parse(sessionStorage.getItem('loginInfo'))
+    const loginInfo = JSON.parse(localStorage.getItem('loginInfo'))
     const items = localStorage.getItem('cartTotalItems')
     const history = useHistory();
     const decideCartPath = () => {

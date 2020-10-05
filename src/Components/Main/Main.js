@@ -8,14 +8,14 @@ import Final from '../Final/Final';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
-if (!JSON.parse(sessionStorage.getItem('loginInfo')))
-    sessionStorage.setItem('loginInfo', JSON.stringify({}))
+if (!JSON.parse(localStorage.getItem('loginInfo')))
+    localStorage.setItem('loginInfo', JSON.stringify({}))
 
 export const GlobalData = React.createContext();
 const Main = () => {
     const [loginInfo, setLoginInfo] = useState({})
     if (loginInfo.isLoggedIn)
-        sessionStorage.setItem('loginInfo', JSON.stringify(loginInfo))
+        localStorage.setItem('loginInfo', JSON.stringify(loginInfo))
     console.log(loginInfo);
     return (
         <>

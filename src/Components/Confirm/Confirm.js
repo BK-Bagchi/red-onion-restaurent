@@ -3,7 +3,7 @@ import './Confirm.css';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import CancelIcon from '@material-ui/icons/Cancel';
-import Items from '../Database/Items';
+// import Items from '../Database/Items';
 import NavBar from '../Header/NavBar';
 import { useHistory } from 'react-router-dom';
 import { GlobalData } from '../Main/Main';
@@ -17,6 +17,16 @@ const Confirm = () => {
     const [errorMessage, setErrorMessage] = useState({
         address: '', number: '', instruction: ''
     })
+    const [loading, setLoading] = useState(true)
+    const [Items, setItems] = useState([])
+    useEffect(() => {
+        fetch('https://calm-tor-38553.herokuapp.com/menuItems')
+            .then(res => res.json())
+            .then(data => {
+                setItems(data)
+                setLoading(false)
+            })
+    }, [])
 
 
     const [addedToCart, setToCart] = useState(JSON.parse(localStorage.getItem('cart')))
@@ -106,29 +116,35 @@ const Confirm = () => {
                         <form className="cart-form" onSubmit={submitDeliveryForm}>
                             <div className="cart-item">
                                 {
-                                    itemAmount.map((item, index) => {
-                                        return (
-                                            <div key={item.id} className="row m-0 my-2 d-flex align-items-center">
-                                                <div className="col-1" onClick={() => deleteItem(item.id)}>
-                                                    <CancelIcon />
-                                                </div>
-                                                <div className="col-4">
-                                                    <img className="w-100" src={require(`../../Resources/${Items[item.id - 1].image}`)} alt="Item Img" />
-                                                </div>
-                                                <div className="col-3">
-                                                    <p className="m-0 font-italic">{item.name}</p>
-                                                    <span className="font-weight-bold text-dark">${(item.price).toFixed(2)}</span>
-                                                </div>
-                                                <div className="col-4">
-                                                    <div className="plus-minus">
-                                                        <button className="minus" onClick={(e) => handelItemAmount(e, index, Items[item.id - 1].price, -1)}><RemoveIcon /></button>
-                                                        <span className="amount bg">{item.amount}</span>
-                                                        <button className="plus" onClick={(e) => handelItemAmount(e, index, Items[item.id - 1].price, 1)}><AddIcon /></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )
-                                    })
+                                    loading ?
+                                        <h6>Loading...</h6> :
+                                        <>
+                                            {
+                                                itemAmount.map((item, index) => {
+                                                    return (
+                                                        <div key={item.id} className="row m-0 my-2 d-flex align-items-center">
+                                                            <div className="col-1" onClick={() => deleteItem(item.id)}>
+                                                                <CancelIcon />
+                                                            </div>
+                                                            <div className="col-4">
+                                                                <img className="w-100" src={require(`../../Resources/${Items[item.id - 1].image}`)} alt="Item Img" />
+                                                            </div>
+                                                            <div className="col-3">
+                                                                <p className="m-0 font-italic">{item.name}</p>
+                                                                <span className="font-weight-bold text-dark">${(item.price).toFixed(2)}</span>
+                                                            </div>
+                                                            <div className="col-4">
+                                                                <div className="plus-minus">
+                                                                    <button className="minus" onClick={(e) => handelItemAmount(e, index, Items[item.id - 1].price, -1)}><RemoveIcon /></button>
+                                                                    <span className="amount bg">{item.amount}</span>
+                                                                    <button className="plus" onClick={(e) => handelItemAmount(e, index, Items[item.id - 1].price, 1)}><AddIcon /></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </>
                                 }
                             </div>
                             <div className="cart-calculation d-flex justify-content-center">

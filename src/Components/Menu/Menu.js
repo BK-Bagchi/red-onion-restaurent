@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Menu.css';
 import About from '../About/About';
 import ChooseUs from '../ChooseUs/ChooseUs';
 import Header from '../Header/Header';
-import Item from '../Database/Items';
 import { useHistory } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        '& > * + *': {
+            marginLeft: theme.spacing(2),
+        },
+    },
+}));
 
 const Menu = () => {
+    const classes = useStyles();
     const history = useHistory();
 
     const [category, setCategory] = useState('Breakfast');
+    const [loading, setLoading] = useState(true);
+    const [Item, setItem] = useState([]);
+    useEffect(() => {
+        fetch('http://calm-tor-38553.herokuapp.com/menuItems')
+            .then(res => res.json())
+            .then(data => {
+                setItem(data)
+                setLoading(false)
+            })
+    }, [])
     const menuItem = Item.filter((item) => {
         return item.category === category;
     });
@@ -43,16 +64,25 @@ const Menu = () => {
                 </ul>
                 <div className="items mx-auto">
                     {
-                        menuItem.map((menu) => {
-                            return (
-                                <div key={menu.id} className="item" onClick={() => history.push(`/item/${menu.id}`)}>
-                                    <img src={require(`../../Resources/${menu.image}`)} alt="Item Img" />
-                                    <p className="m-0">{menu.name}</p>
-                                    <span>{menu.shortDescription}</span>
-                                    <h5>${menu.price}</h5>
-                                </div>
-                            )
-                        })
+                        loading ?
+                            <div className={classes.root}>
+                                <CircularProgress />
+                            </div>
+                            :
+                            <>
+                                {
+                                    menuItem.map((menu) => {
+                                        return (
+                                            <div key={menu.id} className="item" onClick={() => history.push(`/item/${menu.id}`)}>
+                                                <img src={require(`../../Resources/${menu.image}`)} alt="Item Img" />
+                                                <p className="m-0">{menu.name}</p>
+                                                <span>{menu.shortDescription}</span>
+                                                <h5>${menu.price}</h5>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </>
                     }
                 </div>
                 <button className="checkout mx-auto" onClick={decideCartPath}>Checkout Your Food</button>

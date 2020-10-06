@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Final.css'
 import NavBar from '../Header/NavBar';
 import Image1 from '../../Resources/Image/Group 1151.png'
 import Image2 from '../../Resources/Image/Group 1152.png'
 import { useHistory } from 'react-router-dom';
+import { GlobalData } from '../Main/Main';
 
 const Final = () => {
-    localStorage.setItem('cart', [])
-    localStorage.setItem('cartTotalItems', 0)
     const history = useHistory()
+    const orderInfo = useContext(GlobalData).order[0]
+    const placeOrder = {
+        customerInfo: JSON.parse(localStorage.getItem('loginInfo')).email,
+        orderedFood: JSON.parse(localStorage.getItem('cart')),
+        orderDelivery: orderInfo
+    }
+
+    useEffect(() => {
+        fetch('http://calm-tor-38553.herokuapp.com/foodOrderConfirm', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(placeOrder)
+        })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('cart', JSON.stringify([]))
+                localStorage.setItem('cartTotalItems', 0)
+                alert('Your order has been successfully placed')
+            })
+    }, [])
 
     return (
         <>

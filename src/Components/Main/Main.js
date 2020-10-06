@@ -11,15 +11,20 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 if (!JSON.parse(localStorage.getItem('loginInfo')))
     localStorage.setItem('loginInfo', JSON.stringify({}))
 
+if (!JSON.parse(localStorage.getItem('cart')))
+    localStorage.setItem('cart', JSON.stringify([]))
+
 export const GlobalData = React.createContext();
 const Main = () => {
+    const [orderInfo, setOrderInfo] = useState({})
     const [loginInfo, setLoginInfo] = useState({})
     if (loginInfo.isLoggedIn)
         localStorage.setItem('loginInfo', JSON.stringify(loginInfo))
-    console.log(loginInfo);
+
+
     return (
         <>
-            <GlobalData.Provider value={{ login: [loginInfo, setLoginInfo] }}>
+            <GlobalData.Provider value={{ login: [loginInfo, setLoginInfo], order: [orderInfo, setOrderInfo] }}>
                 <Router>
                     <Switch>
                         <Route exact path="/">

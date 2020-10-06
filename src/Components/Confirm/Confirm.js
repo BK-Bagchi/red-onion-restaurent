@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Confirm.css';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
@@ -6,15 +6,18 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import Items from '../Database/Items';
 import NavBar from '../Header/NavBar';
 import { useHistory } from 'react-router-dom';
+import { GlobalData } from '../Main/Main';
 
 const Confirm = () => {
     const history = useHistory()
+    const orderInfo = useContext(GlobalData).order[1];
     const [deliveryDetails, setDeliveryDetails] = useState({
         address: '', number: '', instruction: ''
     })
     const [errorMessage, setErrorMessage] = useState({
         address: '', number: '', instruction: ''
     })
+
 
     const [addedToCart, setToCart] = useState(JSON.parse(localStorage.getItem('cart')))
     const [billingState, setBillingState] = useState({ tax: 5, deliveryFee: 0, totalItem: 0, subTotalPrice: 0 })
@@ -58,8 +61,10 @@ const Confirm = () => {
     const submitDeliveryForm = (e) => {
         e.preventDefault()
         const { address, number } = deliveryDetails
-        if (address && number)
+        if (address && number) {
             history.push('/finished')
+            orderInfo(deliveryDetails)
+        }
         else
             setErrorMessage({ ...errorMessage, instruction: 'Please fill the delivery details' })
     }
@@ -116,9 +121,9 @@ const Confirm = () => {
                                                 </div>
                                                 <div className="col-4">
                                                     <div className="plus-minus">
-                                                        <button className="minus" onClick={(e) => handelItemAmount(e, index, Items[item.id].price, -1)}><RemoveIcon /></button>
+                                                        <button className="minus" onClick={(e) => handelItemAmount(e, index, Items[item.id - 1].price, -1)}><RemoveIcon /></button>
                                                         <span className="amount bg">{item.amount}</span>
-                                                        <button className="plus" onClick={(e) => handelItemAmount(e, index, Items[item.id].price, 1)}><AddIcon /></button>
+                                                        <button className="plus" onClick={(e) => handelItemAmount(e, index, Items[item.id - 1].price, 1)}><AddIcon /></button>
                                                     </div>
                                                 </div>
                                             </div>

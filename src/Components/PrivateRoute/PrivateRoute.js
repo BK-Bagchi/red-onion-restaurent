@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const loginInfo = localStorage.getItem('loginInfo');
+    const loginInfo = JSON.parse(localStorage.getItem('loginInfo'));
     return (
         <Route
             {...rest}

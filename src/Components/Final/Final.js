@@ -16,7 +16,7 @@ const Final = () => {
     }
 
     useEffect(() => {
-        fetch('http://calm-tor-38553.herokuapp.com/foodOrderConfirm', {
+        fetch('https://calm-tor-38553.herokuapp.com/foodOrderConfirm', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(placeOrder)

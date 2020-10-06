@@ -24,7 +24,7 @@ const Menu = () => {
     const [loading, setLoading] = useState(true);
     const [Item, setItem] = useState([]);
     useEffect(() => {
-        fetch('http://calm-tor-38553.herokuapp.com/menuItems')
+        fetch('https://calm-tor-38553.herokuapp.com/menuItems')
             .then(res => res.json())
             .then(data => {
                 setItem(data)

@@ -30,7 +30,7 @@ const ChooseUs = () => {
     const [loading, setLoading] = useState(true)
     const [ChooseData, setChooseData] = useState([])
     useEffect(() => {
-        fetch('http://calm-tor-38553.herokuapp.com/whyChooseUs')
+        fetch('https://calm-tor-38553.herokuapp.com/whyChooseUs')
             .then(res => res.json())
             .then(data => {
                 setChooseData(data)

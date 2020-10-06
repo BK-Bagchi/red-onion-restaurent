@@ -60,7 +60,7 @@ const ItemDetail = () => {
     const [Item, setItem] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch('http://calm-tor-38553.herokuapp.com/menuItems')
+        fetch('https://calm-tor-38553.herokuapp.com/menuItems')
             .then(res => res.json())
             .then(data => {
                 setItem(data)
